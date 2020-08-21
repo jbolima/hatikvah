@@ -1,0 +1,50 @@
+
+#total-cart {
+    display: inline;
+    position: relative;
+    top: -13px;
+    left: 19px
+}
+
+.paragraph {
+    font-family: 'Playball', cursive;
+}
+
+.navbar-custom {
+    color: #FFFFFF;
+    background-color: #006622;
+
+}
+
+.navbar-admin {
+    color: #FFFFFF;
+    background-color: #7952b3;
+}
+
+/* sidebar for dashboard template*/
+.sidebar {
+    display: block;
+}
+
+@media (min-width: 615px) and (max-width: 991px) {
+    #userNav {
+        float: right !important;
+    }
+
+}
+
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.f-row {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.f-row > div[class^="col"] {
+    float: none !important;
+}
+
