@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-
+        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
     ],
 
     /*
