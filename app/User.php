@@ -62,4 +62,9 @@ class User extends Model
         $user->save();
         Session::flash('sm', 'User has been updated');
     }
+
+    static public function getCurrent()
+    {
+        return self::find(Session::get('user_id'));
+    }
 }

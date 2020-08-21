@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contactus;
 use App\Order;
+use App\User;
 use Illuminate\Http\Request;
 
 class CmsController extends MainController
@@ -32,13 +33,14 @@ class CmsController extends MainController
         if ($request->method() == 'POST') {
             $formData = $request->post();
             $new_contactus = new Contactus($formData);
-            $new_contactus->name = Contactus::DEFAULT_EMAIL;
+            $new_contactus->name = User::getCurrent()->email;
             $new_contactus->email_to = $new_contactus->email_from;
-            $new_contactus->email_from = Contactus::DEFAULT_EMAIL;
+            $new_contactus->email_from = User::getCurrent()->email;
             $new_contactus->incoming = 0;
             $new_contactus->save();
             \Session::flash('sm', 'Your message has been accepted');
             //$new_contactus->name = $formData['name']
+            return redirect('cms/contactus');
         }
         return view('cms.contactus', self::$data);
     }
