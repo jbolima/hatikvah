@@ -43,8 +43,6 @@ class UserController extends MainController
     public function postSignin(SigninRequest $request)
     {
         $rt = !empty($request['rt']) ? $request['rt'] : ''; //invest/checkout Or home page
-        //echo $request['email'] .'<br>'; = ex:avi@gmail.com=>email
-        //echo $request['password']; = ex:123456=>password
         if (User::verify($request['email'], $request['password'])) {
             return redirect($rt);
         } else {
@@ -62,7 +60,7 @@ class UserController extends MainController
 
     public function postSignup(SignupRequest $request)
     {
-        User::saveNew($request);
+        User::saveNew($request, User::ROLE_USER);
         return redirect('');
     }
 

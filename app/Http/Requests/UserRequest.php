@@ -13,13 +13,22 @@ class UserRequest extends FormRequest
         return true;
     }
 
-    public function rules()
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @param Request $request
+     * @return array
+     */
+    public function rules(Request $request)
     {
+        $item_id = isset($request->item_id) ? ',' . $request->item_id : '';
+        $password = !isset($request->item_id) ? 'required|' : '';
+
         return [
             'rid' => 'required',
-            'name' => 'required|min:2|max:70',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6|max:10|confirmed'
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email' . $item_id,
+            'password' => $password . 'string|min:6|confirmed',
         ];
     }
 

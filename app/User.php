@@ -2,27 +2,26 @@
 
 namespace App;
 
+use App\Http\Requests\SignupRequest;
 use Illuminate\Database\Eloquent\Model;
 use DB, Session, Hash;
 
 class User extends Model
 {
+    const ROLE_ADMIN = 6;
+    const ROLE_USER = 7;
 
     static public function verify($email, $password)
     {
         $valid = false;
-        $user = DB::table('users AS u')
-            ->join('users_roles AS ur', 'u.id', '=', 'ur.uid')
-            ->where('u.email', '=', $email)
-            ->first();
-        //dd($user);
+        $user = DB::table('users AS u')->where('u.email', '=', $email)->first();
 
         if ($user) {
 
             if (Hash::check($password, $user->password)) {
                 $valid = true;
 
-                if ($user->rid == 6) Session::put('is_admin', true);
+                if ($user->role_id == 6) Session::put('is_admin', true);
                 Session::put('user_id', $user->id);
                 Session::put('user_name', $user->name);
                 Session::flash('sm', 'Welcome back, ' . $user->name);
@@ -31,16 +30,13 @@ class User extends Model
         return $valid;
     }
 
-    static public function saveNew($request)
+    static public function saveNew($request, int $rid)
     {
-
-
-        $user = new self(); // = new User();
+        $user = new self();
         $user->name = $request['name'];
         $user->email = $request['email'];
-        $user->password = bcrypt($request['password']);
-        $user->save();
-        $user->roles()->attach($request['rid'] ?? 7);
+        $user->password = Hash::make($request['password']);
+        $user->role_id = $rid;
         $user->save();
 
         Session::put('user_id', $user->id);
@@ -48,9 +44,9 @@ class User extends Model
         Session::flash('sm', 'Welcome ' . $user->name . 'You signup successfuly');
     }
 
-    public function roles()
+    public function role()
     {
-        return $this->belongsToMany(Role::class, 'users_roles', 'uid', 'rid');
+        return $this->belongsTo(Role::class);
     }
 
     static public function updateItem($request, $id)
@@ -58,8 +54,11 @@ class User extends Model
         $user = self::find($id);
         $user->name = $request['name'];
         $user->email = $request['email'];
-        $user->password = $request['password'];
-        $user->menu_id = $request['menu_id'];
+        $user->role_id = $request['rid'];
+
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
         $user->save();
         Session::flash('sm', 'User has been updated');
     }

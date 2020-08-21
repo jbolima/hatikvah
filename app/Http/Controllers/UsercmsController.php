@@ -19,13 +19,13 @@ class UsercmsController extends MainController
 
     public function create()
     {
-        self::$data['users_rules'] = User::all()->toArray();
+        self::$data['user'] = new User;
         return view('cms.add_user', self::$data);
     }
 
     public function store(UserRequest $request)
     {
-        User::saveNew($request);
+        User::saveNew($request, $request['rid']);
         return redirect('cms/users');
     }
 
@@ -36,13 +36,10 @@ class UsercmsController extends MainController
         return view('cms.delete_user', self::$data);
     }
 
-    public function edit($id)
+    public function edit(User $user)
     {
-        //echo __METHOD__;
-        self::$data['users_roles'] = User::all()->toArray();//store users_role for new user
-        self::$data['item'] = User::find($id)->toArray();
-        return view('cms.edit_user', self::$data);
-
+        self::$data['user'] = $user;
+        return view('cms.add_user', self::$data);
     }
 
     public function update(UserRequest $request, $id)
