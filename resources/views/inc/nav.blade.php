@@ -10,19 +10,19 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ url('/')}}"><i>B</i>-HCI</a>
+                    <a class="navbar-brand" href="{{ url('/')}}">BM-H</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="{{ url('#about') }}"></a></li>
-                        <li><a href="{{ url('aboutus') }}">About Us</a></li>
-                        <li><a href="{{ url('contactus') }}">Contact Us</a></li>
+                        <li><a href="{{ url('aboutus') }}">A PROPOS</a></li>
+                        <li><a href="{{ url('contactus') }}">CONTACT</a></li>
                         <!-- the dynamic link for navbar-->
                         @foreach( $menu as $item)
                             <li><a href="{{ url($item['url'])}}">{{ $item['link']}}</a></li>
                         @endforeach
 
-                        <li><a href="{{ url('invest') }}">Investments</a></li>
+                        <li><a href="{{ url('invest') }}">DOMAINES</a></li>
                     <!--li>
               <a href="{{ url('invest/checkout') }}">
                 <div id="total-cart">{{ Cart::getTotalQuantity() }}</div>
@@ -32,14 +32,14 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right ">
                         @if( ! Session::has('user_id'))
-                            <li><a href="{{ url('user/signin') }}">Sign in</a></li>
-                            <li><a href="{{ url('user/signup') }}">Sign up</a></li>
+                            <li><a href="{{ url('user/signin') }}">S'IDENTIFIER</a></li>
+                            <li><a href="{{ url('user/signup') }}">S'ENREGISTRER</a></li>
                         @else
                             <li><a href="{{ url('user/profile') }}">{{ Session::get('user_name')}}</a></li>
                             @if(Session::has('is_admin'))
                                 <li><a href="{{ url('cms/dashboard') }}">CMS</a></li>
                             @endif
-                            <li><a href="{{ url('user/logout') }}">Logout</a></li>
+                            <li><a href="{{ url('user/logout') }}">LOGOUT</a></li>
                         @endif
                         <li>
                             <a class="lang" data-lang="fr" href="{{ url('') }}"><img width="20"

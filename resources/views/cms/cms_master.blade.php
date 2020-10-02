@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>B-Hatikvah Admin Panel</title>
+    <title>BM Holding Admin Panel</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -22,10 +22,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ url('cms/dashboard') }}"><b><i>B-</i>HCI CMS</b></a>
+            <a class="navbar-brand" href="{{ url('cms/dashboard') }}">BMH CMS</b></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ url('user/profile') }}">{{ Session::get('user_name')}}</a></li>
                 <li><a target="_blank" href="{{ url('')}}">Back To Site</a></li>
                 <li><a href="{{ url('user/logout')}}">Logout</a></li>
             </ul>
@@ -80,12 +81,7 @@
 </div>
 <hr>
 <footer>
-    <div class="container">
-        <div class="col-md-12">
-            <p class="text-center"><b><i>B</i>-HCI</b> ** B-Hatikvah Consulting & Investiments &copy 2019
-                - {{date('Y')}}</p>
-        </div>
-    </div>
+    @include('inc.footer-content',[ 'cmsMode' => 1 ])
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

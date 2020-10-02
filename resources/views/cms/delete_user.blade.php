@@ -4,11 +4,7 @@
     <div class="row">
         <div class="col-md-8">
             <form action="{{ url('cms/users/' .$item_id)}}" method="POST">
-            @csrf
-            <!-- http protocol for deleting
-        <input type="hidden" name="_method" value="DELETE">
-        <!--end http protocol for delete-->
-                <!-- Laravel elete method-->
+                @csrf
                 {{ method_field('DELETE')}}
                 <h3>Are you sure you want to delete this user?</h3>
                 <input type="submit" name="submit" value="Delete" class="btn btn-danger">

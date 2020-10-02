@@ -10,6 +10,7 @@
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css"/>
     <script>var BASE_URL = "{{ url('') }}/";</script>
+
 </head>
 <body>
 <header>

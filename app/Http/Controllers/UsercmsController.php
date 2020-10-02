@@ -51,8 +51,8 @@ class UsercmsController extends MainController
     public function destroy($id)
     {
         User::destroy($id);
-        Session::flash('sm', 'Carousel has been deleted');
-        return redirect('cms/carousels');
+        Session::flash('sm', 'User has been deleted');
+        return redirect('cms/users');
 
     }
 

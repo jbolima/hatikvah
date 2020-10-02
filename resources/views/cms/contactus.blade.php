@@ -10,6 +10,7 @@
             <th>To</th>
             <th>Message</th>
             <th>Created at</th>
+            <th>Updated at</th>
             <th>Actions</th>
             </thead>
             <tbody>
@@ -19,6 +20,7 @@
                     <td>{{ $message->email_to }}</td>
                     <td>{!! $message->message !!}</td>
                     <td>{{ $message->created_at }}</td>
+                    <td>{{ $message->updated_at }}</td>
                     <td>
                         <a class="replayTo" data-incoming="{{ $message->incoming }}"
                            data-email-from="{{ $message->email_from }}" data-email-to="{{ $message->email_to }}"

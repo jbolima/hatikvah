@@ -1,25 +1,25 @@
 @extends('cms.cms_master')
 @section('cms_content')
-    <h2 class="page-header text-center"><b><i>B</i></b>-Hatikvah Consulting & Investments</h2>
+    <h2 class="page-header text-center">BM Holding s.a.r.l</h2>
 
-    <h3> Direction & Management team </h3>
+    <h2> Direction & Management team </h2>
     <div class="row placeholders">
 
 
         <div class="col-xs-6 col-sm-3 placeholder">
             <!--img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail"-->
             <img width="175" height="150" src="{{ asset('images/'.'jmbolima.jpeg') }}">
-            <h4>Jean Michel B.A.</h4>
-            <span class="text-muted">Founder & General Manager</span>
+            <h4>Mr. Jean Michel B.A.</h4>
+            <span class="text-muted">Administrateur Associé</span>
         </div>
         <div class="col-xs-6 col-sm-3 placeholder">
             <!--img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail"-->
             <img width="150" src="{{ asset('images/'.'florimond.jpeg') }}">
-            <h4>Florimond M.K</h4>
-            <span class="text-muted">Co-founder & Associate manager</span>
+            <h4>Mr. Florimond M.K</h4>
+            <span class="text-muted">Administrateur Associé</span>
         </div>
     </div>
-    <h2 class="sub-header">Section title</h2>
+    <h3 class="sub-header">Management</h3>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>

@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h3>B-HCI | Investment Projects</h3>
+            <h3>BM-H | DOMAINES</h3>
         </div>
     </div>
     <div class="row f-row">
